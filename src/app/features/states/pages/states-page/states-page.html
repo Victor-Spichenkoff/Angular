@@ -1,1 +1,43 @@
-<p>states-page works!</p>
+<div>
+    <button class="button" (click)="addToDo()">Aumentar</button>
+    <div class="flex">
+        <div class="flex-1">
+            @for (todo of allToDos(); track todo.id) {
+                <div class="gap-3">
+                    <span>{{ todo.id }}</span>
+                    <span  [class.line-through]="todo.isDone" [class.text-gray-400]="todo.isDone" >{{ todo.label }}</span>
+                    <input type="checkbox" [(ngModel)]="todo.isDone" />
+                </div>
+            } @empty {
+                <div>Lista Vazia</div>
+            }
+
+        </div>
+
+        <div class="flex-1">
+            @for (todo of onlyLessThan5(); track todo.id) {
+                <div class="gap-3">
+                    <span>{{ todo.id }}</span>
+                    <span>{{ todo.label }}</span>
+                    <input type="checkbox" [(ngModel)]="todo.isDone" />
+                </div>
+            } @empty {
+                <div>Lista do top 5 Vazia</div>
+            }
+        </div>
+    </div>
+
+    @if (allToDos().length == 0) {
+        <div>Sem nada</div>
+    } @else if (allToDos().length <= 2) {
+        <div>Tem 2-</div>
+    } @else {
+        <div>Tem 2 +</div>
+    }
+
+    <h2 class="text-2xl">Form</h2>
+    <input [(ngModel)]="nome" />
+<!--    SEM O ()-->
+
+    <p>Valor da variável nome é: {{nome()}}</p>
+</div>
