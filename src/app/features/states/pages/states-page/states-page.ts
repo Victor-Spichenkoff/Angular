@@ -1,11 +1,13 @@
 import { Component, computed, Signal, signal, WritableSignal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { TestState } from '../../components/test-state/test-state';
 
 @Component({
-    imports: [FormsModule],
+    imports: [FormsModule, TestState],
     selector: 'app-states-page',
     styles: ``,
     templateUrl: './states-page.html',
+    standalone: true
 })
 export class StatesPage {
     protected allToDos: WritableSignal<ToDo[]> = signal([]);
@@ -20,8 +22,12 @@ export class StatesPage {
         ]);
     }
 
+    removeItem(id: number) {
+        this.allToDos.update((current) => current.filter((t) => t.id !== id));
+    }
+
     // FORM
-    protected nome = signal("");
+    protected nome = signal('');
 }
 
 export interface ToDo {

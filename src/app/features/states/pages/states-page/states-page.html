@@ -3,11 +3,10 @@
     <div class="flex">
         <div class="flex-1">
             @for (todo of allToDos(); track todo.id) {
-                <div class="gap-3">
-                    <span>{{ todo.id }}</span>
-                    <span  [class.line-through]="todo.isDone" [class.text-gray-400]="todo.isDone" >{{ todo.label }}</span>
-                    <input type="checkbox" [(ngModel)]="todo.isDone" />
-                </div>
+                <app-test-state
+                    [todo]="todo"
+                    (remove)="removeItem($event)"
+                />
             } @empty {
                 <div>Lista Vazia</div>
             }
@@ -16,6 +15,7 @@
 
         <div class="flex-1">
             @for (todo of onlyLessThan5(); track todo.id) {
+<!--                <app-test-state [todo]="todo" />-->
                 <div class="gap-3">
                     <span>{{ todo.id }}</span>
                     <span>{{ todo.label }}</span>

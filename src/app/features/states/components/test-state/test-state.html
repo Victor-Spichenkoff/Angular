@@ -1,0 +1,9 @@
+<div class="gap-3">
+    <span>{{ todo().id }}</span>
+    <span [class.line-through]="todo().isDone" [class.text-gray-400]="todo().isDone" >{{ todo().label }}</span>
+    <input type="checkbox" [(ngModel)]="todo().isDone" />
+<!--    Nesse caso, o ngModel consegue propagar para cima-->
+
+    <button (click)="removeBtnClick(todo().id)" class="bg-red-500">X</button>
+    <button (click)="remove.emit(todo().id)" class="bg-red-500">X</button>
+</div>
