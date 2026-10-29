@@ -5,5 +5,6 @@
 <!--    Nesse caso, o ngModel consegue propagar para cima-->
 
     <button (click)="removeBtnClick(todo().id)" class="bg-red-500">X</button>
-    <button (click)="remove.emit(todo().id)" class="bg-red-500">X</button>
+<!--    <button (click)="remove.emit(todo().id)" class="bg-red-500">X</button>-->
+    <span>Contagem: {{ todosCount() }}</span>
 </div>

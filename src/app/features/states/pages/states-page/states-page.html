@@ -1,11 +1,11 @@
 <div>
-    <button class="button" (click)="addToDo()">Aumentar</button>
+    <button class="button" (click)="todoService.addToDo()">Aumentar</button>
     <div class="flex">
         <div class="flex-1">
-            @for (todo of allToDos(); track todo.id) {
+            @for (todo of todos(); track todo.id) {
                 <app-test-state
                     [todo]="todo"
-                    (remove)="removeItem($event)"
+                    (remove)="todoService.removeItem($event)"
                 />
             } @empty {
                 <div>Lista Vazia</div>
@@ -27,9 +27,9 @@
         </div>
     </div>
 
-    @if (allToDos().length == 0) {
+    @if (todoService.todos().length == 0) {
         <div>Sem nada</div>
-    } @else if (allToDos().length <= 2) {
+    } @else if (todoService.todos().length <= 2) {
         <div>Tem 2-</div>
     } @else {
         <div>Tem 2 +</div>
