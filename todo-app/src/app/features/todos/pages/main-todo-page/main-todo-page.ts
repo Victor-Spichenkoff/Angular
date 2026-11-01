@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core'
+import { Component, computed, inject } from '@angular/core'
 import { TodoService } from '../../services/todo-service'
 import { GroupItem } from '../../components/group-item/group-item'
 
@@ -11,5 +11,5 @@ import { GroupItem } from '../../components/group-item/group-item'
 export class MainTodoPage {
     todosService = inject(TodoService)
 
-    groups = this.todosService.allStates().groups
+    groups = computed(() => this.todosService.allStates().groups)
 }

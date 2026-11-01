@@ -1,7 +1,7 @@
-<div>
+<div class="p-4">
   <div class="flex flex-col gap-y-4">
 
-  @for (group of groups; track group.id) {
+  @for (group of groups(); track group.id) {
     <app-group-item
       [group]="group" />
   }

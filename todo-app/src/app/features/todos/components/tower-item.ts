@@ -5,7 +5,7 @@ import { Component, input } from '@angular/core'
     selector: 'app-tower-item',
     template: `
         <div class="flex flex-col">
-            <div class="text-{{ color() }}-500 text-xs">{{ top() }}</div>
+            <div class="text-{{ color() }}-500 text-xs font-bold">{{ top() }}</div>
             <div class="text-xs text-center">{{ bottom() }}</div>
         </div>
     `,
@@ -13,5 +13,8 @@ import { Component, input } from '@angular/core'
 export class TowerItem {
     top = input.required<string>()
     bottom = input.required<string>()
-    color = input<'blue' | 'red' | 'green'>('blue')
+    color = input.required<'blue' | 'red' | 'green'>()
+    // ngOnInit() {
+    //     console.log(this.color())
+    // }
 }

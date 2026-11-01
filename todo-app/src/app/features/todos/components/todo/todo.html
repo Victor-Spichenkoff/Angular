@@ -1,0 +1,19 @@
+<div class="flex items-center justify-between w-96
+         bg-white border border-gray-200 rounded-2xl
+         px-5 py-4 shadow-sm
+         transition-all duration-200
+         hover:shadow-md hover:-translate-y-0.5 text-gray-800">
+  <!--  Marcador-->
+  <div class="w-5 h-5 border-1 border-b-slate-900">
+    @if (todo().isDone) {
+      <span class="block w-full h-full bg-blue-500 text-3xl p-0 overflow-hidden text-white">X</span>
+    } @else {
+
+    }
+  </div>
+
+<!--  texto-->
+  <div>
+    {{ todo().label }}
+  </div>
+</div>

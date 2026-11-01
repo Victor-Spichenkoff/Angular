@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router'
 
 @Component({
-    imports: [],
+    imports: [RouterLink],
     selector: 'app-not-found',
     template: `
         <div
@@ -59,7 +60,7 @@ import { Component } from '@angular/core';
                 <!-- Action -->
                 <div class="mt-9 flex flex-col sm:flex-row items-center justify-center gap-3">
                     <a
-                        href="/"
+                        [routerLink]="'/'"
                         class="w-full sm:w-auto px-7 py-3 rounded-xl bg-indigo-500 hover:bg-indigo-400 text-white font-semibold transition-all duration-300 hover:-translate-y-1 shadow-lg shadow-indigo-500/20"
                     >
                         ← Back to home
