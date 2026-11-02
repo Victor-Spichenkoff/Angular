@@ -1,19 +1,32 @@
-<div class="flex items-center justify-between w-96
-         bg-white border border-gray-200 rounded-2xl
-         px-5 py-4 shadow-sm
-         transition-all duration-200
-         hover:shadow-md hover:-translate-y-0.5 text-gray-800">
+<!--<div class="flex items-center justify-between w-96-->
+<!--         bg-white border border-gray-200 rounded-2xl-->
+<!--         px-5 py-4 shadow-sm-->
+<!--         transition-all duration-200-->
+<!--         hover:shadow-md hover:-translate-y-0.5 text-gray-800">-->
+
+<app-card>
+
   <!--  Marcador-->
-  <div class="w-5 h-5 border-1 border-b-slate-900">
-    @if (todo().isDone) {
-      <span class="block w-full h-full bg-blue-500 text-3xl p-0 overflow-hidden text-white">X</span>
-    } @else {
+  <div class="flex items-center gap-x-2 text-xl font-bold">
+    <input
+      class="size-6 -mb-1"
+      type="checkbox"
+      [value]="todo().isDone"
+      [ngModel]="todo().isDone"
+      (click)="toggleTodoEvent.emit(todo().id)"
+    />
+    <!--  texto-->
+    <div>
+      {{ todo().label }}
+    </div>
 
-    }
   </div>
 
-<!--  texto-->
-  <div>
-    {{ todo().label }}
+  <!--  Ações -->
+  <div class="flex gap-x-4">
+    <button class="w-12 h-12  overflow-hidden bg-green-500 font-bold text-5xl p-2 rounded-xl">E</button>
+    <button class="w-12 h-12  overflow-hidden bg-red-500 font-bold text-5xl rounded-xl">X</button>
+
   </div>
-</div>
+</app-card>
+<!--</div>-->

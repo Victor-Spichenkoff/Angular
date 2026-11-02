@@ -3,6 +3,7 @@
   @for (todo of allTodos(); track todo.id) {
     <app-todo
       [todo]="todo"
+      (toggleTodoEvent)="toggleTodo($event)"
       />
   }
 

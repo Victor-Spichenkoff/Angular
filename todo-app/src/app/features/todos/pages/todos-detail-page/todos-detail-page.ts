@@ -13,7 +13,8 @@ export class TodosDetailPage {
     todosService = inject(TodoService)
 
     allTodos = computed(() => this.todosService.getTodosByGroupId(this.groupId()))
-    ngOnInit() {
-        console.log(this.allTodos())
+
+    toggleTodo(todoId: string) {
+      this.todosService.toggleTodo(todoId)
     }
 }

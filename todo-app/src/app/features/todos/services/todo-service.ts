@@ -28,16 +28,16 @@ export class TodoService {
     }
 
     /*
-    * Retorna o novo group
-    * Caso já exista, retorna null TODO: toast
-    * */
+     * Retorna o novo group
+     * Caso já exista, retorna null TODO: toast
+     * */
     addGroup(title: string) {
         const group: TodosGroup = {
             id: crypto.randomUUID(),
             title,
         }
 
-        if(this._allStates().groups.some(x => x.title.toLowerCase() === title.toLowerCase()))
+        if (this._allStates().groups.some((x) => x.title.toLowerCase() === title.toLowerCase()))
             return null
 
         this._allStates.update((current) => ({
@@ -54,13 +54,45 @@ export class TodoService {
         }))
     }
 
+    updateGroupById(groupId: string, newGroup: TodosGroup) {
+        this._allStates.update((current) => ({
+            todos: current.todos,
+            groups: current.groups.map((g) => {
+                if (g.id != groupId) return g
+
+                return newGroup
+            })
+        }))
+    }
 
     /*
-    * TODOS AREA
-    * */
+     * TODOS AREA
+     * */
 
     getTodosByGroupId(groupId: string) {
         return this._allStates().todos.filter((t) => t.todoGroupId == groupId)
+    }
+
+    getTodosById(todoId: string) {
+        return this._allStates().todos.filter((t) => t.id == todoId)[0]
+    }
+
+    updateTodoById(todoId: string, newTodo: Todo) {
+        this._allStates.update((current) => ({
+            groups: current.groups,
+            todos: current.todos.map((t) => {
+                if (t.id != todoId) return t
+
+                return newTodo
+            }),
+        }))
+    }
+
+    toggleTodo(todoId: string) {
+        const todo = this.getTodosById(todoId)
+        todo.isDone = !todo.isDone
+
+        this.updateTodoById(todoId, todo)
     }
 
     /*

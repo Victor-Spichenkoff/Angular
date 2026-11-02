@@ -9,3 +9,8 @@
   /*background: #1d0057;*/
   background: #111c2e;
 }
+
+button:hover {
+  scale: 1.03;
+  box-shadow: 3px 3px 5px black;
+}
