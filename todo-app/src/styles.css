@@ -5,12 +5,25 @@
   transition: .28s all;
 }
 
+:root {
+  /*Para ícones*/
+  --color-primary: #2563eb;
+  --color-secondary: #64748b;
+  --color-success: #16a34a;
+  --color-warning: #d97706;
+  --color-danger: #dc2626;
+}
+
 .background {
   /*background: #1d0057;*/
   background: #111c2e;
 }
 
+button {
+  cursor: pointer;
+}
+
 button:hover {
   scale: 1.03;
-  box-shadow: 3px 3px 5px black;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.34);
 }
