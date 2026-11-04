@@ -1,4 +1,4 @@
-import { Component, input, Signal } from '@angular/core'
+import { Component, input, model, Signal } from '@angular/core'
 import { FormsModule } from '@angular/forms'
 
 @Component({
@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms'
     templateUrl: './input.html',
 })
 export class Input {
-    state = input.required<Signal<any>>()
+    state = model.required<string>()
     type = input<string>('text')
     label = input<string>('')
     placeholder = input<string>('')

@@ -3,7 +3,9 @@
 <input
   [type]="type()"
   [placeholder]="placeholder()"
-  [ngModel]="state()"
+  [(ngModel)]="state"
+  [value]="state()"
+  class="outline-none  border-b focus:border-b-3 border-black px-1"
 >
 </label>
 

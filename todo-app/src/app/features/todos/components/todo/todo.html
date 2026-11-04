@@ -8,18 +8,27 @@
     [notTranslate]="true"
 >
     @if (isEdit()) {
-        <div class="flex justify-between">
-            // todo Fazer 2 way biding
+        <!--        MODO EDIÇÃO-->
+        <div class="flex justify-between w-full items-center">
             <app-input
-                placeholder="Label"
-                [state]="todoNewName"
+                (keyup.esc)="cancelEdit()"
+                (keyup.enter)="saveEdit()"
+                class="text-xl mr-2 box-border"
+                placeholder="Label (enter)"
+                [(state)]="todoNewName"
             />
-            {{ todoNewName() }}
-            <button
-                (click)="toggleEdit()"
-                class="spect-square p-1 border-2 border-blue-500 hover:bg-blue-500 font-bold text-5xl rounded-xl">
-                <app-icon name="check" size="lg" />
-            </button>
+            <div class="flex gap-x-4 items-center">
+                <button
+                    (click)="saveEdit()"
+                     class="aspect-square p-2 w-auto border-2  border-blue-500 hover:bg-blue-500 font-bold rounded-xl">
+                    <app-icon name="check" size="lg" />
+                </button>
+                <button
+                    (click)="cancelEdit()"
+                     class="aspect-square p-2 w-auto border-2  border-red-500 hover:bg-red-500 font-bold rounded-xl">
+                    <app-icon name="close" size="lg" />
+                </button>
+            </div>
         </div>
     } @else {
 
@@ -39,16 +48,17 @@
         </div>
 
         <!--  Ações -->
-        <div class="flex gap-x-4">
+        <div class="flex gap-x-4 items-center">
             <button
                 (click)="toggleEdit()"
-                class="aspect-square p-1 border-2 border-green-500 hover:bg-green-500 font-bold rounded-xl">
+                class="aspect-square p-2 w-auto border-2 border-green-500 hover:bg-green-500 font-bold rounded-xl">
                 <app-icon name="edit" size="lg" />
             </button>
-            <button class="spect-square p-1 border-2 border-red-500 hover:bg-red-500 font-bold text-5xl rounded-xl">
+            <button
+                (click)="removeTodo()"
+                class="aspect-square p-2 w-auto border-2 border-red-500 hover:bg-red-500 font-bold rounded-xl">
                 <app-icon name="trash" size="lg" />
             </button>
-
         </div>
     }
 

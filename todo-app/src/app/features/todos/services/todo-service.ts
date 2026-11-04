@@ -61,7 +61,7 @@ export class TodoService {
                 if (g.id != groupId) return g
 
                 return newGroup
-            })
+            }),
         }))
     }
 
@@ -93,6 +93,31 @@ export class TodoService {
         todo.isDone = !todo.isDone
 
         this.updateTodoById(todoId, todo)
+    }
+
+    /*
+    * null == erro
+    * to-do modificado == sucesso
+    * */
+    changeTodoLabel(todoId: string, newLabel: string) {
+        const todo = this.getTodosById(todoId)
+        if (todo == null) return null
+
+        todo.label = newLabel
+        this.updateTodoById(todoId, todo)
+        return todo
+    }
+
+    /*
+    * T/F sobre sucesso de apagar
+    * */
+    removeTodoById(todoId: string) {
+        this._allStates.update((current) => ({
+            groups: current.groups,
+            todos: current.todos.filter((t) => t.id != todoId)
+        }))
+
+        return true
     }
 
     /*

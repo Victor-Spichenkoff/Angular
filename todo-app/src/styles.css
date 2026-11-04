@@ -2,28 +2,46 @@
 @import "tailwindcss";
 
 * {
-  transition: .28s all;
+    transition: .28s all;
 }
 
 :root {
-  /*Para ícones*/
-  --color-primary: #2563eb;
-  --color-secondary: #64748b;
-  --color-success: #16a34a;
-  --color-warning: #d97706;
-  --color-danger: #dc2626;
+    /*Para ícones*/
+    --color-primary: #2563eb;
+    --color-secondary: #64748b;
+    --color-success: #16a34a;
+    --color-warning: #d97706;
+    --color-danger: #dc2626;
 }
 
 .background {
-  /*background: #1d0057;*/
-  background: #111c2e;
+    /*background: #1d0057;*/
+    background: #111c2e;
 }
 
 button {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 button:hover {
-  scale: 1.03;
-  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.34);
+    scale: 1.03;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.34);
+}
+
+
+.fade-in-out {
+    animation: fade-in .4s ease-in,
+    fade-in 0.4s 3.6s reverse ease-in;
+}
+
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
