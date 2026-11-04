@@ -21,9 +21,6 @@ export class TodoItem {
     isEdit = signal(false)
     // todoNewName = signal(() => this.todo().label)
     todoNewName = signal('')
-    constructor() {
-        // effect(() => this.todoNewName = this.todo().label, this.todo())
-    }
 
     ngOnInit(): void {
         this.todoNewName.set(this.todo().label)

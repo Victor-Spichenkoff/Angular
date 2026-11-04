@@ -69,6 +69,22 @@ export class TodoService {
      * TODOS AREA
      * */
 
+    addTodo(groupId: string, label: string) {
+        const todo: Todo = {
+            id: crypto.randomUUID(),
+            label,
+            isDone: false,
+            todoGroupId: groupId,
+        }
+
+
+        this._allStates.update((current) => ({
+            groups: current.groups,
+            todos: [...current.todos, todo],
+        }))
+        return todo
+    }
+
     getTodosByGroupId(groupId: string) {
         return this._allStates().todos.filter((t) => t.todoGroupId == groupId)
     }

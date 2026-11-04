@@ -1,15 +1,29 @@
 <div class="p-8">
-  <div class="flex flex-col gap-y-4">
-  @for (todo of allTodos(); track todo.id) {
-    <app-todo
-      [todo]="todo"
-      (toggleTodoEvent)="toggleTodo($event)"
-      />
-    <app-todo
-      [todo]="todo"
-      (toggleTodoEvent)="toggleTodo($event)"
-      />
-  }
 
-  </div>
+    <app-card
+        [isStatic]="true"
+        class="flex justify-between mb-14">
+        <app-input
+            (keydown.enter)="addTodo()"
+            [(state)]="newLabel"
+            placeholder="Label"
+        />
+
+        <button
+            (click)="addTodo()"
+            class="aspect-square p-2 w-auto border-2  border-blue-500 hover:bg-blue-500 font-bold rounded-xl">
+            <app-icon name="check" size="lg" />
+        </button>
+    </app-card>
+
+
+    <div class="flex flex-col gap-y-4">
+        @for (todo of allTodos(); track todo.id) {
+            <app-todo
+                [todo]="todo"
+                (toggleTodoEvent)="toggleTodo($event)"
+            />
+        }
+
+    </div>
 </div>

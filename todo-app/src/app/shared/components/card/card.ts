@@ -7,5 +7,5 @@ import { Component, input } from '@angular/core'
     templateUrl: './card.html',
 })
 export class Card {
-    notTranslate = input<boolean>(false)
+    isStatic = input<boolean>(false)
 }
