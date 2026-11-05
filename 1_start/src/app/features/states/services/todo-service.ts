@@ -28,6 +28,10 @@ export class TodoService {
         this._todos.update((current) => current.filter((t) => t.id !== id));
     }
 
+    getById(id: number) {
+        return this._todos().filter(x => x.id === id)[0];
+    }
+
     private loadFromStorage(): ToDo[] {
         try {
             const raw = localStorage.getItem(TODO_KEY);

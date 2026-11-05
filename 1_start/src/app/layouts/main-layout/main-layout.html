@@ -1,10 +1,20 @@
-<header class="p-4 bg-slate-900 text-white flex gap-4">
-  <a routerLink="/">Tarefas</a>
-  <a routerLink="/about">About</a>
-  <a routerLink="/auth">Auth</a>
-  <a routerLink="/states">States</a>
-</header>
+<div class="w-screen h-screen overflow-scroll block bg-gray-800 text-white">
+    <header class="p-4 bg-slate-900 text-white flex gap-4">
+        <a
+            routerLinkActive="font-bold underline"
+            routerLink="">Home</a>
+        <a
+            routerLinkActive="font-bold underline"
+            routerLink="/about">About</a>
+        <a
+            routerLinkActive="font-bold underline"
+            routerLink="/auth">Auth</a>
+        <a
+            routerLinkActive="font-bold underline"
+            routerLink="/todos">Todos/States</a>
+    </header>
 
-<main class="max-w-xl mx-auto p-4">
-  <router-outlet />
-</main>
+    <main class="flex justify-center max-w-7xl mx-auto w-full h-full">
+        <router-outlet />
+    </main>
+</div>

@@ -2,9 +2,10 @@ import { Component, computed, inject, input, output } from '@angular/core';
 import { ToDo } from '../../pages/states-page/states-page';
 import { FormsModule } from '@angular/forms';
 import { TodoService } from '../../services/todo-service';
+import { RouterLink } from '@angular/router';
 
 @Component({
-    imports: [FormsModule],
+    imports: [FormsModule, RouterLink],
     selector: 'app-test-state',
     styles: ``,
     templateUrl: './test-state.html',
@@ -16,7 +17,7 @@ export class TestState {
 
     // pega o mesmo que já tinha tem injetado
     todosService = inject(TodoService);
-    todosCount = this.todosService.todosCount
+    todosCount = this.todosService.todosCount;
 
     removeBtnClick(id: number) {
         this.remove.emit(id);

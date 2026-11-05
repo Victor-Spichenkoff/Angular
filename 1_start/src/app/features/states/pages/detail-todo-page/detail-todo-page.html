@@ -1,0 +1,14 @@
+<div>
+<!--    // as t  cria sozinho uma var segura e não null-->
+
+<!--    <app-test-state-->
+<!--        [todo]="currentTodo()" />-->
+
+    @if (currentTodo(); as t) {
+
+    <app-test-state
+        [todo]="t" />
+    } @else {
+        <div>Escreve direito!</div>
+    }
+</div>

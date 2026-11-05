@@ -1,10 +1,14 @@
-<div class="gap-3">
+<!--    é uma junção de rotas. Pega o /todos + o id -> /todos/ID-->
+<!--    href = vai recarregar tudo, perder estados e mais -->
+<a
+    [routerLink]="['/todos', todo().id]"
+    class="gap-3 block">
     <span>{{ todo().id }}</span>
     <span [class.line-through]="todo().isDone" [class.text-gray-400]="todo().isDone" >{{ todo().label }}</span>
     <input type="checkbox" [(ngModel)]="todo().isDone" />
 <!--    Nesse caso, o ngModel consegue propagar para cima-->
 
-    <button (click)="removeBtnClick(todo().id)" class="bg-red-500">X</button>
 <!--    <button (click)="remove.emit(todo().id)" class="bg-red-500">X</button>-->
     <span>Contagem: {{ todosCount() }}</span>
-</div>
+</a>
+    <button (click)="removeBtnClick(todo().id)" class="bg-red-500">X</button>
