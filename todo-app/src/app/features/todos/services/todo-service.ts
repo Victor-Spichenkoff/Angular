@@ -1,4 +1,4 @@
-import { Service, signal } from '@angular/core'
+import { effect, Service, signal } from '@angular/core'
 
 const STATES_KEY = 'todos_app_all_todos_key'
 
@@ -6,6 +6,12 @@ const STATES_KEY = 'todos_app_all_todos_key'
 export class TodoService {
     private _allStates = signal<TodoAppStates>(this.loadFromStorage())
     public allStates = this._allStates.asReadonly()
+
+    constructor() {
+        effect(() => {
+            localStorage.setItem(STATES_KEY, JSON.stringify(this._allStates()))
+        })
+    }
 
     /*
      * GROUPS MANAGEMENT
@@ -77,7 +83,6 @@ export class TodoService {
             todoGroupId: groupId,
         }
 
-
         this._allStates.update((current) => ({
             groups: current.groups,
             todos: [...current.todos, todo],
@@ -112,9 +117,9 @@ export class TodoService {
     }
 
     /*
-    * null == erro
-    * to-do modificado == sucesso
-    * */
+     * null == erro
+     * to-do modificado == sucesso
+     * */
     changeTodoLabel(todoId: string, newLabel: string) {
         const todo = this.getTodosById(todoId)
         if (todo == null) return null
@@ -125,12 +130,12 @@ export class TodoService {
     }
 
     /*
-    * T/F sobre sucesso de apagar
-    * */
+     * T/F sobre sucesso de apagar
+     * */
     removeTodoById(todoId: string) {
         this._allStates.update((current) => ({
             groups: current.groups,
-            todos: current.todos.filter((t) => t.id != todoId)
+            todos: current.todos.filter((t) => t.id != todoId),
         }))
 
         return true
@@ -145,31 +150,33 @@ export class TodoService {
             if (raw) return JSON.parse(raw)
         } catch {}
 
-        return {
-            todos: [
-                {
-                    id: '1',
-                    isDone: false,
-                    todoGroupId: '1',
-                    label: 'Teste',
-                },
-                {
-                    id: '2',
-                    isDone: true,
-                    todoGroupId: '1',
-                    label: 'Teste 2',
-                },
-            ],
-            groups: [
-                {
-                    title: 'Gerais',
-                    id: '1',
-                },
-                {
-                    title: 'Menos gerais',
-                    id: '2',
-                },
-            ],
-        }
+        return { groups: [], todos: [] }
+        //preencher automático, só limpar e rodar esse
+        // return {
+        //     todos: [
+        //         {
+        //             id: '1',
+        //             isDone: false,
+        //             todoGroupId: '1',
+        //             label: 'Teste',
+        //         },
+        //         {
+        //             id: '2',
+        //             isDone: true,
+        //             todoGroupId: '1',
+        //             label: 'Teste 2',
+        //         },
+        //     ],
+        //     groups: [
+        //         {
+        //             title: 'Gerais',
+        //             id: '1',
+        //         },
+        //         {
+        //             title: 'Menos gerais',
+        //             id: '2',
+        //         },
+        //     ],
+        // }
     }
 }
