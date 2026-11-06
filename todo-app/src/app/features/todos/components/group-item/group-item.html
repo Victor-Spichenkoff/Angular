@@ -1,55 +1,16 @@
-<!--<div class="flex justify-between w-96 bg-gray-300 rounded-xl px-4 py-2 hover:scale-[103%]">-->
-<!--  <h3 class="text-xl">{{group().title}}</h3>-->
-
-<!--  <div class="flex gap-2">-->
-<!--    <app-tower-item-->
-<!--      top="Active"-->
-<!--      color="red"-->
-<!--      [bottom]="count().active.toString()"-->
-<!--    />-->
-<!--    <app-tower-item-->
-<!--      top="Done"-->
-<!--      color="green"-->
-<!--      [bottom]="count().done.toString()"-->
-<!--    />-->
-<!--    <app-tower-item-->
-<!--      top="Total"-->
-<!--      color="blue"-->
-<!--      [bottom]="count().total.toString()"-->
-<!--    />-->
-<!--  </div>-->
-<!--</div>-->
-
-
 <a [routerLink]="['/todos', group().id]">
-
-
-
   <app-card>
 
+    <div class="min-w-0">
+      <h3 class="text-xl font-bold truncate">
+        {{ group().title }}
+      </h3>
+    </div>
 
-  <div class="min-w-0">
-    <h3 class="text-lg font-semibold  truncate">
-      {{ group().title }}
-    </h3>
-  </div>
-
-  <div class="flex items-center gap-3">
-    <app-tower-item
-      top="Active"
-      color="red"
-      [bottom]="count().active.toString()"
-    />
-    <app-tower-item
-      top="Done"
-      color="green"
-      [bottom]="count().done.toString()"
-    />
-    <app-tower-item
-      top="Total"
-      color="blue"
-      [bottom]="count().total.toString()"
-    />
-  </div>
+    <div class="flex items-center gap-3">
+      <app-tower-item top="Active" color="red" [bottom]="count().active.toString()"/>
+      <app-tower-item top="Done" color="green" [bottom]="count().done.toString()"/>
+      <app-tower-item top="Total" color="blue" [bottom]="count().total.toString()"/>
+    </div>
   </app-card>
 </a>

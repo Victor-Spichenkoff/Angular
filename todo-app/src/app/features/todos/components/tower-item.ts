@@ -9,7 +9,6 @@ import { NgClass } from '@angular/common'
             <div
                 [ngClass]="finalColor()"
                 class="text-xs font-bold"
-                [class.finalColor()]="true"
             >
                 {{ top() }}
             </div>
@@ -21,8 +20,15 @@ export class TowerItem {
     top = input.required<string>()
     bottom = input.required<string>()
     color = input.required<'blue' | 'red' | 'green'>()
-    finalColor = computed(() => `text-${this.color()}-500`)
-    // ngOnInit() {
-    //     console.log(this.color())
-    // }
+    finalColor = computed(() => `text-${this.color().toString()}-500`)
+
+    // finalColor = computed(() => {
+    //     const colors = {
+    //         blue: 'text-blue-500',
+    //         red: 'text-red-500',
+    //         green: 'text-green-500',
+    //     }
+
+    //     return colors[this.color()]
+    // })
 }
