@@ -1,0 +1,16 @@
+
+<app-card
+    [isStatic]="true"
+    class="flex justify-between mb-14">
+    <app-input
+        (keydown.enter)="emitEvent()"
+        [(state)]="inputValue"
+        [placeholder]="placeholder()"
+    />
+
+    <button
+        (click)="emitEvent()"
+        class="aspect-square p-2 w-auto border-2  border-blue-500 hover:bg-blue-500 font-bold rounded-xl">
+        <app-icon name="disk" size="lg" />
+    </button>
+</app-card>

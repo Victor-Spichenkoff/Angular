@@ -1,0 +1,1 @@
+var t=[{path:``,title:`ToDos`,loadComponent:()=>import(`./chunk-DZ5pEs4N.js`).then(o=>o.MainTodoPage)},{path:`:groupId`,title:`ToDos details`,loadComponent:()=>import(`./chunk-D-JP3zmO.js`).then(o=>o.TodosDetailPage)}];export{t as TODOS_ROUTES};
