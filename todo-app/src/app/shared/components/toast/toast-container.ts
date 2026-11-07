@@ -9,7 +9,7 @@ import { Component, inject } from '@angular/core'
             @for (toast of toastService.toasts(); track toast.id) {
                 <div
                     class="rounded-lg px-4 py-3 text-white shadow-lg flex items-center gap-3
-                    fade-in-out"
+                    slide-in-out"
                     [class.bg-green-600]="toast.type === 'success'"
                     [class.bg-red-600]="toast.type === 'error'"
                     [class.bg-blue-600]="toast.type === 'info'"
