@@ -1,4 +1,4 @@
-import { Component, computed, effect, inject, input, output, signal } from '@angular/core'
+import { Component, inject, input, output, signal } from '@angular/core'
 import { FormsModule } from '@angular/forms'
 import { Card } from '../../../../shared/components/card/card'
 import { AppIcon } from '../../../../shared/components/app-icon/app-icon'
@@ -19,7 +19,6 @@ export class TodoItem {
     toggleTodoEvent = output<string>()
     // states
     isEdit = signal(false)
-    // todoNewName = signal(() => this.todo().label)
     todoNewName = signal('')
 
     ngOnInit(): void {
@@ -31,12 +30,12 @@ export class TodoItem {
     }
 
     removeTodo() {
-        this.toast.error("Apagado")
+        this.toast.error("Deleted")
         this.todoService.removeTodoById(this.todo().id)
     }
 
     saveEdit() {
-        this.toast.info("Editado")
+        this.toast.info("Edited")
         this.todoService.changeTodoLabel(this.todo().id, this.todoNewName())
         this.toggleEdit()
     }

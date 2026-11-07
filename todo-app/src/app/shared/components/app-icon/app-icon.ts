@@ -15,6 +15,7 @@ import {
     LucideInfo,
     LucideChevronDown,
     LucideArrowLeft, LucideDynamicIcon,
+    LucideSave
 } from '@lucide/angular'
 import { IconColor, IconSize } from './app-icon.types'
 
@@ -35,6 +36,7 @@ const ICONS = {
     info: LucideInfo,
     chevronDown: LucideChevronDown,
     arrowLeft: LucideArrowLeft,
+    disk: LucideSave
 } as const
 
 type IconName = keyof typeof ICONS

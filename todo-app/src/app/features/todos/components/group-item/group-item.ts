@@ -21,13 +21,18 @@ export class GroupItem {
     dialog = inject(DialogService)
 
     async removeGroup() {
-        const isYes = await this.dialog.ask({
-            title: "You really want to delete this group?",
-            message: "This action will delete all the todos in this group and cannot be undone.",
-            confirmText: "Delete",
-        })
 
-        if(!isYes) return
+        // se não tiver nada, pode excluir direto
+        if (this.todosService.countTodosByGroupId(this.group().id) > 0) {
+
+            const isYes = await this.dialog.ask({
+                title: "You really want to delete this group?",
+                message: "This action will delete all the todos in this group and cannot be undone.",
+                confirmText: "Delete",
+            })
+
+            if (!isYes) return
+        }
 
         this.todosService.removeGroupById(this.group().id)
     }
