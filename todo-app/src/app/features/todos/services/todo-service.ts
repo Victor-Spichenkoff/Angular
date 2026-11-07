@@ -53,10 +53,10 @@ export class TodoService {
         return group
     }
 
-    removeFromGroupById(groupId: string) {
+    removeGroupById(groupId: string) {
         this._allStates.update((current) => ({
-            todos: current.todos,
-            groups: current.groups.filter((t) => t.id !== groupId),
+            todos: current.todos.filter((t) => t.todoGroupId !== groupId),
+            groups: current.groups.filter((g) => g.id !== groupId),
         }))
     }
 
@@ -95,7 +95,11 @@ export class TodoService {
     }
 
     getTodosById(todoId: string) {
-        return this._allStates().todos.filter((t) => t.id == todoId)[0]
+        return this._allStates().todos.find((t) => t.id == todoId)
+    }
+
+    countTodosByGroupId(groupId: string) {
+        return this._allStates().todos.filter((t) => t.todoGroupId == groupId).length
     }
 
     updateTodoById(todoId: string, newTodo: Todo) {
@@ -111,6 +115,7 @@ export class TodoService {
 
     toggleTodo(todoId: string) {
         const todo = this.getTodosById(todoId)
+        if(todo == null) return
         todo.isDone = !todo.isDone
 
         this.updateTodoById(todoId, todo)

@@ -11,6 +11,12 @@
       <app-tower-item top="Active" color="red" [bottom]="count().active.toString()"/>
       <app-tower-item top="Done" color="green" [bottom]="count().done.toString()"/>
       <app-tower-item top="Total" color="blue" [bottom]="count().total.toString()"/>
+
+        <button
+            (click)="$event.preventDefault(); $event.stopPropagation(); removeGroup()"
+            class="z-50 aspect-square p-2 w-auto border-2 border-red-500 hover:bg-red-500 font-bold rounded-xl">
+            <app-icon name="trash" size="lg" />
+        </button>
     </div>
   </app-card>
 </a>
