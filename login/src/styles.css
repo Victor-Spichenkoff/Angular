@@ -1,0 +1,90 @@
+/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+
+* {
+    transition: .28s all;
+}
+
+:root {
+    /*Para ícones*/
+    --color-primary: #2563eb;
+    --color-secondary: #64748b;
+    --color-success: #16a34a;
+    --color-warning: #d97706;
+    --color-danger: #dc2626;
+}
+
+.background {
+    background: #111c2e;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:hover {
+    scale: 1.03;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.34);
+}
+
+/* Usei esse */
+.slide-in-out {
+    animation: slide-in .4s ease-in,
+        slide-in 0.4s 3.6s reverse ease-in forwards;
+}
+
+.fade-in-out {
+    animation: fade-in .4s ease-in,
+        fade-in 0.4s 3.6s reverse ease-in forwards;
+}
+
+
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+@keyframes slide-in {
+    0% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+
+    70% {
+        opacity: 1;
+        transform: translateX(-20%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+
+
+
+
+
+
+/* Para quem tem problema de acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+    .fade-in-out {
+        animation: none;
+        opacity: 1;
+    }
+    .slide-in-out {
+        animation: none;
+        opacity: 1;
+    }
+}
