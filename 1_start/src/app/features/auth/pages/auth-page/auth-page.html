@@ -1,3 +1,21 @@
 <h1>Auth aqui</h1>
 
 <input type="text" placeholder="Seu nome" />
+
+<button
+    (click)="send()"
+
+>Enviar</button>
+
+
+<button (click)="httpTestService.load()">
+    Get points
+</button>
+
+@if(isLoading()) {
+    <app-loading />
+} @else {
+    @for(point of points(); track point.userId) {
+        <div>{{ point.userName }} = {{ point.totalPoints }}</div>
+    }
+}

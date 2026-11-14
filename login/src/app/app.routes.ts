@@ -6,13 +6,13 @@ export const routes: Routes = [
         path: '',
         component: MainLayout,
         children: [
-            { path: '', redirectTo: 'todos', pathMatch: 'full' },
+            { path: '', redirectTo: 'auth', pathMatch: 'full' },
             {
-                path: 'todos',
-                title: "ToDo",
-                loadChildren: () =>
-                    import('./features/todos/todos.routes').then((m) => m.TODOS_ROUTES),
-            },
+                path: 'auth',
+                title: 'Auth',
+                loadComponent: () =>
+                    import('./features/auth/pages/auth-pages/auth-pages').then((m) => m.AuthPages),
+            }
         ],
     },
     // ROTA PARA 404

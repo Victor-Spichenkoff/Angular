@@ -1,5 +1,5 @@
 {
-  "name": "todo-app",
+  "name": "auth-app",
   "version": "0.0.1",
   "scripts": {
     "ng": "ng",
